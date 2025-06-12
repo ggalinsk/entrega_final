@@ -6,9 +6,11 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Alumno, Clase
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
+from django.views.generic import ListView
 
-def index(request):
-    return render(request, 'escuela_surf/index.html')
+class IndexView(TemplateView):
+    template_name = 'escuela_surf/index.html'
 
 def registro_alumno(request):
     if request.method == 'POST':
@@ -54,20 +56,19 @@ def vista_login(request):
     return render(request, 'escuela_surf/login.html', {'form': form})
 
 @login_required
-@login_required
 def perfil_alumno(request):
-    alumno = request.user.alumno  # Relación OneToOne con User
+    alumno = request.user.alumno 
 
-    # Membresía activa más reciente
+    
     membresia_activa = alumno.membresia_set.filter(activa=True).order_by('-fecha_inicio').first()
 
-    # Clases asignadas al alumno
-    clases_asignadas = alumno.clases.all().order_by('dia', 'hora_inicio')
+    
+    clases_asignadas = Clase.objects.all().order_by('dia', 'hora_inicio')
 
     context = {
         'alumno': alumno,
         'membresia': membresia_activa,
-        'clases': clases_asignadas,  # esto lo agregamos
+        'clases': clases_asignadas,
     }
     return render(request, 'escuela_surf/perfil_alumno.html', context)
 
@@ -94,3 +95,10 @@ def editar_perfil(request):
         'form_usuario': form_usuario,
         'form_alumno': form_alumno
     })
+
+class ClaseListView(ListView):
+    model = Clase
+    template_name = 'escuela_surf/clase_list.html'  # Ruta de tu template
+    context_object_name = 'clases'  # Nombre de la variable que usás en el template
+    ordering = ['dia', 'hora_inicio']  # Ordenar como quieras
+    paginate_by = 10  # Opcional, para paginar si hay muchas clases

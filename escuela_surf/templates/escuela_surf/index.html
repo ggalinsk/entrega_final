@@ -3,8 +3,13 @@
 {% block content %}
   <!-- Hero -->
   <section class="hero" id="inicio">
+    <div>
+      <img class="s-20" src="{% static 'img\logo_transparente.png' %}" alt="Logo Ola Sur">
+    </div>       
+  </section>
+  <!--Bienvenida-->
+  <section class="titulo" id="inicio">
     <div class="container">
-        <img class="s-20" src="{% static 'img\logo_transparente.png' %}" alt="Logo Ola Sur">
         <h1 class="display-4">Surf para todos, todo el año</h1>
         <p class="lead">Clases de surf para adultos y niños en Mar del Plata</p>
         <a href="#clases" class="btn btn-primary btn-lg">Ver Clases</a>
@@ -100,6 +105,10 @@
               </div>
             </div>
           </div>
+          
+        </div>
+        <div class="m-4 d-flex justify-content-center">
+           <a class="btn btn-primary" href="{% url 'clase_list' %}">Conocé nuestros horario de clase</a>
         </div>
       </div>
 

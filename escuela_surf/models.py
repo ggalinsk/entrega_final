@@ -44,7 +44,7 @@ class Clase(models.Model):
     dia = models.CharField(max_length=10, choices=DIA_SEMANAL)
     hora_inicio = models.TimeField()
     hora_fin = models.TimeField()
-    profe = models.CharField(max_length=100)  # Texto simple
+    profe = models.CharField(max_length=100) 
 
     def __str__(self):
         return f"{self.dia} {self.hora_inicio.strftime('%H:%M')} - {self.hora_fin.strftime('%H:%M')} con {self.profe}"

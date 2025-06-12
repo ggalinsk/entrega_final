@@ -52,14 +52,15 @@
     </div>
   </div>
 
+  <!-- Clases asignadas -->
   <div class="card mb-4">
     <div class="card-header bg-success text-white">Mis clases</div>
     <div class="card-body">
       {% if clases %}
         <ul class="list-group">
           {% for clase in clases %}
-            <li class="list-group-item">
-              <strong>{{ clase.dia }}:</strong> {{ clase.hora_inicio|time:"H:i" }} – {{ clase.hora_fin|time:"H:i" }} con {{ clase.profe }}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              {{ clase.dia }} {{ clase.hora_inicio }} - {{ clase.hora_fin }} con {{ clase.profe }}
             </li>
           {% endfor %}
         </ul>
@@ -72,7 +73,7 @@
   <a href="{% url 'editar_perfil' %}" class="btn btn-primary me-2">Editar perfil</a>
 </div>
 
-<!-- Clases asignadas -->
+
 
 {% endblock %}
 

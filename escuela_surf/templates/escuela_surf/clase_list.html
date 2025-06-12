@@ -1,0 +1,31 @@
+{% extends 'escuela_surf/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">Listado de Clases</h2>
+
+  {% if clases %}
+    <div class="list-group">
+      {% for clase in clases %}
+        <div class="list-group-item list-group-item-action mb-2 shadow-sm rounded">
+          <h5 class="mb-1">{{ clase.dia }} - {{ clase.hora_inicio|time:"H:i" }} a {{ clase.hora_fin|time:"H:i" }}</h5>
+          <p class="mb-0">Profesor: <strong>{{ clase.profe }}</strong></p>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-info" role="alert">
+      No hay clases disponibles.
+    </div>
+  {% endif %}
+</div>
+
+<div class="container mt-4">
+    <h2 class="mb-4 d-flex justify-content-center">Sumate a nuestras Clases!</h2>
+
+    <div class="m-4 d-flex justify-content-center">
+           <a class="btn btn-primary" href="{% url 'registro_alumno' %}">Registrate acá!</a>
+    </div>
+ </div>
+
+{% endblock %}
