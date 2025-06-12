@@ -1,0 +1,78 @@
+{% extends 'escuela_surf/base.html' %}
+
+{% block content %}
+<div class="container my-4">
+  <h2 class="mb-4">Perfil del Alumno</h2>
+
+  <!-- Datos de usuario -->
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">Datos de la cuenta</div>
+    <div class="card-body">
+      <p><strong>Usuario:</strong> {{ request.user.username }}</p>
+      <p><strong>Email:</strong> {{ request.user.email }}</p>
+      <p><strong>Nombre:</strong> {{ request.user.first_name }}</p>
+      <p><strong>Apellido:</strong> {{ request.user.last_name }}</p>
+    </div>
+  </div>
+
+  <!-- Datos personales -->
+  <div class="card mb-4">
+    <div class="card-header bg-secondary text-white">Información personal</div>
+    <div class="card-body">
+      <p><strong>Teléfono:</strong> {{ alumno.telefono }}</p>
+      <p><strong>Dirección:</strong> {{ alumno.direccion }}</p>
+      <p><strong>Fecha de nacimiento:</strong> {{ alumno.fecha_nacimiento }}</p>
+      <p><strong>Fecha de alta:</strong> {{ alumno.fecha_alta }}</p>
+      <p><strong>Notificaciones:</strong>
+        {% if alumno.notificaciones %}
+          <span class="badge bg-success">Activadas</span>
+        {% else %}
+          <span class="badge bg-danger">Desactivadas</span>
+        {% endif %}
+      </p>
+    </div>
+  </div>
+
+  <!-- Membresía -->
+  <div class="card mb-4">
+    <div class="card-header bg-info text-white">Membresía activa</div>
+    <div class="card-body">
+      {% if membresia %}
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ membresia.get_tipo_plan_display }}
+            <span>
+              {{ membresia.fecha_inicio }} – {{ membresia.fecha_fin }}
+            </span>
+          </li>
+        </ul>
+      {% else %}
+        <p>No tenés membresía activa.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header bg-success text-white">Mis clases</div>
+    <div class="card-body">
+      {% if clases %}
+        <ul class="list-group">
+          {% for clase in clases %}
+            <li class="list-group-item">
+              <strong>{{ clase.dia }}:</strong> {{ clase.hora_inicio|time:"H:i" }} – {{ clase.hora_fin|time:"H:i" }} con {{ clase.profe }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No estás inscripto en ninguna clase aún.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <a href="{% url 'editar_perfil' %}" class="btn btn-primary me-2">Editar perfil</a>
+</div>
+
+<!-- Clases asignadas -->
+
+{% endblock %}
+

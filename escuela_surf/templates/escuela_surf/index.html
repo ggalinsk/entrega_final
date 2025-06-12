@@ -1,0 +1,139 @@
+{% extends "escuela_surf/base.html" %}
+{% load static %}
+{% block content %}
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="container">
+        <img class="s-20" src="{% static 'img\logo_transparente.png' %}" alt="Logo Ola Sur">
+        <h1 class="display-4">Surf para todos, todo el año</h1>
+        <p class="lead">Clases de surf para adultos y niños en Mar del Plata</p>
+        <a href="#clases" class="btn btn-primary btn-lg">Ver Clases</a>
+    </div>
+  </section>
+
+  <!-- Sobre Nosotros -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">¿Quiénes somos?</h2>
+      <p class="text-center">En Ola Sur somos una comunidad de amantes del surf que cree en el poder del mar para transformar, conectar y divertir. Creamos un espacio donde el aprendizaje se da con buena onda, respeto por la naturaleza y acompañamiento constante.</p>
+    </div>
+  </section>
+
+  <!-- Profesores -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Conocé a nuestros profes</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+          <img src="{% static 'img/profesor1.jpg' %}" alt="Instructor 1" class="instructor-img mb-3">
+          <h5>Juan Pérez</h5>
+          <p>Instructor certificado. “Cada ola es una nueva oportunidad.”</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="{% static 'img/profesora2.jpg' %}" alt="Instructora 2" class="instructor-img mb-3">
+          <h5>Lola Martínez</h5>
+          <p>Especialista en clases para niños. “El mar enseña jugando.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner -->
+  <section id= "clases" class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1 class="display-4">Clases para todos los niveles</h1>
+      <p class="lead">Descubrí nuestras propuestas para adultos y niños. Elegí tu plan ideal y empezá a surfear con nosotros.</p>
+    </div>
+  </section>
+
+  <!-- Planes -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-4 bg-light class-card">
+            <h2>Clases para Adultos</h2>
+            <p>Para todos los niveles: principiantes, intermedios y avanzados. Adaptamos cada clase según tu experiencia. ¡Animate a progresar con seguridad y buena onda!</p>
+            <ul>
+              <li>Incluye tabla y traje</li>
+              <li>Duración: 90 minutos</li>
+              <li>Turnos por la mañana o tarde</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 bg-light class-card">
+            <h2>Clases para Niños</h2>
+            <p>Desde los 6 años, fomentamos el vínculo con el mar de forma divertida y segura. Ideal para desarrollar equilibrio, confianza y amor por el agua.</p>
+            <ul>
+              <li>Grupos reducidos</li>
+              <li>Materiales incluidos</li>
+              <li>Profes especializados en edades tempranas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Membresías -->
+      <div class="mt-5">
+        <h3 class="text-center mb-4">Elegí el plan que más te convenga</h3>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4">
+            <div class="card text-center border-primary">
+              <div class="card-header bg-primary text-white">
+                4 clases/mes
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">$X.XXX</h4>
+                <p class="card-text">Ideal si recién empezás o tenés poco tiempo. Flexibilidad para elegir los días.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-center border-success">
+              <div class="card-header bg-success text-white">
+                8 clases/mes
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">$X.XXX</h4>
+                <p class="card-text">Para quienes quieren avanzar rápido y surfear más seguido. ¡Más olas, más progreso!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="mt-5">
+        <h4 class="mb-3">Preguntas frecuentes</h4>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="q1">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
+                ¿Qué necesito llevar?
+              </button>
+            </h2>
+            <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Sólo traje de baño, toalla y protector solar. Nosotros te damos todo lo demás.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="q2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+                ¿Qué pasa si llueve o hay mal clima?
+              </button>
+            </h2>
+            <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Si las condiciones no son seguras, reprogramamos tu clase sin costo.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+{% endblock content %}

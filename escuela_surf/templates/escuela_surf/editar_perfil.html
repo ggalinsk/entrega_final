@@ -1,0 +1,42 @@
+{% extends 'escuela_surf/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Editar Perfil</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <h5 class="mt-4">Datos de Usuario</h5>
+        {% for field in form_usuario %}
+            <div class="mb-3">
+                <label>{{ field.label }}</label>
+                {% render_field field class="form-control" %}
+                {% if field.errors %}
+                    <div class="text-danger">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <h5 class="mt-4">Datos de Alumno</h5>
+        {% for field in form_alumno %}
+            <div class="mb-3">
+                <label>{{ field.label }}</label>
+                {% if field.field.widget.input_type == "checkbox" %}
+                    <div class="form-check">
+                        {% render_field field class="form-check-input" %}
+                    </div>
+                {% else %}
+                    {% render_field field class="form-control" %}
+                {% endif %}
+                {% if field.errors %}
+                    <div class="text-danger">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <a href="{% url 'perfil_alumno' %}" class="btn btn-secondary ms-2">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
