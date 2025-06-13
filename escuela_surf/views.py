@@ -63,7 +63,7 @@ def perfil_alumno(request):
     membresia_activa = alumno.membresia_set.filter(activa=True).order_by('-fecha_inicio').first()
 
     
-    clases_asignadas = Clase.objects.all().order_by('dia', 'hora_inicio')
+    clases_asignadas = alumno.clases.all().order_by('dia', 'hora_inicio')
 
     context = {
         'alumno': alumno,
