@@ -98,7 +98,7 @@ def editar_perfil(request):
 
 class ClaseListView(ListView):
     model = Clase
-    template_name = 'escuela_surf/clase_list.html'  # Ruta de tu template
-    context_object_name = 'clases'  # Nombre de la variable que usás en el template
-    ordering = ['dia', 'hora_inicio']  # Ordenar como quieras
-    paginate_by = 10  # Opcional, para paginar si hay muchas clases
+    template_name = 'escuela_surf/clase_list.html' 
+    context_object_name = 'clases'  
+    ordering = ['dia', 'hora_inicio'] 
+    paginate_by = 10  
